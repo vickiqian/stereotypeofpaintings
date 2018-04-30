@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+  <title>stereotype of paintings</title>
+<head>
+    
+     <script src="jquery-3.3.1.min.js"></script>
+     <script src="scroll.js"></script>
+  
+  
+  <style>
+    
+    
+    body {
+
+      color: #000;
+      background-color: #f4f4f4;
+      transition: background-color .3s ;
+      margin:0, auto;
+      text-align: center;
+      vertical-align: middle;
+      font-size: 120%;
+    }
+
+    /* panel styles */
+    .panel {
+      /* min height incase content is higher than window height */
+      min-height: 100vh;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      font-family: sans-serif, helvetica;
+      /* outline: 10px solid hotpink; */
+      /* turn above on to see the edge of panels */
+    }
+    .text{
+      position: fixed;
+      color: white;
+      font-size: 120;
+      font-weight: 400;
+      z-index: 99;
+    }
+    .t1{
+      top: 6vh;
+      left: 3vw;
+    }
+    .t2{
+      bottom:6vh;
+      right: 3vw;
+    }
+    .tag{
+      z-index: 100;
+      color: white;
+      width: 110px;
+      height: 30px;
+      text-align: center;
+      border-radius: 10px;
+    }
+    .c1{
+      background-color: #e50e18;
+    }
+    .c2{
+      background-color: #34a651;
+    }
+    .c3{
+      background-color: #4e7fff;
+    }
+    .c4{
+      background-color: #34a651;
+    }
+    .c5{
+      background-color: #f8bf3d;
+    }
+    .c6{
+      background-color: #f8bf3d;
+    }
+    p{
+      z-index: 100;
+      color: white;
+      font-size: 10vw;
+      letter-spacing: 0.2vw;
+      line-height: 1;
+    }
+    .box{
+      position:fixed;
+      left: 2vw;
+      top: 4vh;
+      height: 92vh;
+      width: 96vw;
+      border-radius: 5px;
+      background-color: black;
+      display: grid;
+      grid-template-columns:  repeat(5, 17.6vw) ;
+      grid-template-rows: repeat(2, 46vh) ;
+      grid-column-gap: 2vw;
+      overflow-y: hidden;
+    }
+    .img01{
+      z-index:10;
+      grid-column: 1;
+      grid-row: 2;
+      height: 20vh;
+      margin-top: 5vh;
+    }
+    @keyframes img01{
+      0%{
+        filter: drop-shadow(3px 3px 5px white) invert(20%);
+      }
+      25%{
+        filter: drop-shadow(6px 6px 10px lightpink) invert(25%);
+      }
+      50%{
+        filter: drop-shadow(10px 10px 15px pink) invert(50%);
+      }
+      75%{
+        filter: drop-shadow(13px 13px 20px red) invert(70%);
+      }
+      100%{
+        filter: drop-shadow(16px 16px 30px red) invert(80%);
+      }
+    }
+    .img01:hover{
+      animation: img01 1.5s ease-in infinite;
+      
+    }
+    .img02{
+      grid-column: 2;
+      grid-row: 1;
+      height: 20vh;
+      margin-top: 10vh;
+    }
+    @keyframes img02{
+      0%{
+        filter: blur(1px) sepia(10%);
+      }
+      25%{
+        filter: blur(2px) sepia(20%);
+        transform: skewX(4deg);
+      }
+      50%{
+        filter: blur(3px) sepia(30%);
+        transform: skewX(8deg);
+      }
+      75%{
+        filter: blur(4px) sepia(40%);
+        transform: skewX(12deg);
+      }
+      100%{
+        filter: blur(5px) sepia(50%);
+        transform: skewX(16deg);
+      }
+    }
+    .img02:hover{
+      animation: img02 2s ease-in infinite;
+    }
+    .img03{
+      grid-column: 3;
+      grid-row: 2;
+      height: 20vh;
+      margin-top: 3vh;
+    }
+    
+    @keyframes img03{
+  0%{
+    filter:blur(0) contrast(1);
+  }
+  
+  55%{
+    filter:blur(15px) contrast(10);
+    
+  }
+  
+  100%{
+    filter:blur(20px) contrast(20);
+  }
+}
+    .img03:hover{
+      animation: img03 2.5s ease-out infinite;
+    }
+    .img04{
+      grid-column: 4;
+      grid-row: 1;
+      height: 20vh;
+      margin-top: 10vh;
+    }
+    @keyframes img04{
+      0%{
+        filter: saturate(2%)  blur(0px);
+        transform: translateY(2px);
+      }
+      10%{
+        transform: translateY(-2px);
+      }
+      20%{
+        transform: translateY(2px);
+      }
+      40%{
+        transform: translateY(-2px);
+      }
+      50%{
+        filter: saturate(10%) blur(10px);
+        transform: translateY(2px);
+      }
+      60%{
+        transform: translateY(-2px);
+      }
+      70%{
+        transform: translateY(2px);
+      }
+      80%{
+        transform: translateY(-2px);
+      }
+      90%{
+        transform: translateY(2px);
+      }
+      100%{
+        filter: saturate(30%) blur(5px);
+        transform: translateY(-2px);
+      }
+    }
+    .img04:hover{
+     animation: img04 1s infinite;
+    }
+    .img05{
+      grid-column: 5;
+      grid-row: 2;
+      height: 25vh;
+    }
+    @keyframes img05{
+      0%{
+        filter: brightness(100%) hue-rotate(10deg);
+        transform: rotate(0deg);
+      }
+      10%{
+        transform: rotate(2deg);
+      }
+      20%{
+        transform: rotate(0deg);
+      }
+      30%{
+        transform: rotate(2deg);
+      }
+      40%{
+        transform: rotate(0deg);
+      }
+      50%{
+        filter: brightness(70%) hue-rotate(30deg);
+        transform: rotate(2deg);
+      }
+      60%{
+        transform: rotateX(0deg);
+      }
+      70%{
+        transform: rotate(2deg);
+      }
+      80%{
+        transform: rotate(0deg);
+      }
+      90%{
+        transform: rotate(2deg);
+      }
+      100%{
+        filter: brightness(50%) hue-rotate(90deg);
+        transform: rotate(0deg);
+      }
+    }
+    .img05:hover{
+      animation: img05 1s ease-in infinite;
+    }
+    /* colors */
+
+    .color-violet {
+      background-color: #e50e18;
+    }
+    .color-indigo {
+      background-color: #34a651;
+    }
+    .color-blue {
+      background-color: #4e7fff;
+    }
+    .color-green {
+      background-color: #34a651;
+    }
+    .color-yellow {
+      background-color: #f8bf3d;
+    }
+    .color-orange {
+      background-color: #f8bf3d;
+    }
+    .color-red {
+      background-color: #e50e18;
+    }
+
+
+
+
+  </style>
+</head>
+<body>
+    <div class="text t1">Google's Diary</div>
+    <div class="text t2">Day 016</div>
+    <div class="box">
+      <div class="col img01"><img src="01.jpg" height="150%"></div>
+      <div class="col img02"><img src="02.jpg" height="150%"></div>
+      <div class="col img03"><img src="03.jpg" height="150%"></div>
+      <div class="col img04"><img src="04.jpeg" height="150%"></div>
+      <div class="col img05"><img src="05.jpg" height="150%"></div>
+    </div>
+    
+    <div class="panel" data-color="white">
+      
+    </div>
+    <div class="panel" data-color="violet">
+      <div class="tag c1">vintage</div>
+    </div>
+    <div class="panel" data-color="indigo">
+      <div class="tag c2";>trendy</div>
+    </div>
+    <div class="panel" data-color="blue">
+      <div class="tag c3">fashionable</div>
+    </div>
+    <div class="panel" data-color="green">
+      <div class="tag c4">inspiration</div>
+    </div>
+    <div class="panel" data-color="yellow">
+     <div class="tag c5">make over</div>
+    </div>
+    <div class="panel" data-color="orange">
+      <div class="tag c6">pretty</div>
+    </div>
+    <div class="panel" data-color="red">
+      <p>stereotype1:<br>halloween costume</p>  
+    </div>
+
+</body>
+</html>
